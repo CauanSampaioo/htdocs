@@ -1,19 +1,6 @@
 <?php
-function mensagemLancamento(int $ano): void
-{
-    if ($ano > 2022) {
-    echo "Esse filme é um lançamento\n";
-    } elseif($ano > 2020 && $ano <= 2022) {
-        echo "Esse filme ainda é novo\n";
-    } else {
-        echo "Esse filme não é um lançamento\n";
-    }
-}
 
-function incluirNoPlano(bool $planoPrime, int $anoLancamento): bool
-{
-    return $planoPrime || $anoLancamento < 2020;
-}
+require __DIR__."/funcoes.php";
 
 echo "Bem-vindo(a) ao screen match!\n";
 
@@ -33,13 +20,12 @@ for ($contador = 1; $contador < $argc; $contador++) {
 $notaFilme = array_sum($notas) / $quantidadeDeNotas;
 $planoPrime = true;
 
-$incluirNoPlano($planoPrime, $anoLancamento);
+$incluidoNoPlano = incluirNoPlano($planoPrime, $anoLancamento);
+echo $incluidoNoPlano ? "Incluido no PLano\n" : "Não está incluso !\n";
 
 echo "Nome do filme: " . $nomeFilme . "\n";
 echo "Nota do filme: $notaFilme\n";
 echo "Ano de lançamento: $anoLancamento\n";
-
-
 
 $genero = match ($nomeFilme) {
     "Top Gun - Maverick" => "ação",
@@ -58,4 +44,14 @@ $filme = [
 ];
 
 
-echo $filme["ano"];
+// echo $filme["ano"];
+// echo "<pre>";
+// var_dump($notas);
+// sort($notas);
+// var_dump($notas);
+// echo "<pre>";
+
+$posicao = strpos($filme['nome'], ':');
+var_dump($posicao);
+$extraiPosicao = substr($filme['nome'], 0, $posicao);
+var_dump($extraiPosicao);
