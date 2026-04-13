@@ -1,33 +1,34 @@
 <?php
-
-// Impede o acesso direto ao arquivo
+//Definição de caesso
 define('CONTROL', true);
 
-// Carrega as rotas
-$routes = require_once 'inc/routes.php';
+//Lista de rotas
+$rotas = require __DIR__ . '/inc/rotas.php';
 
-// Verifica a rota solicitada
-$route = $_GET['route'] ?? 'home';
+//Buscar rota na URL
+$rota = $_GET['rota'] ?? 'home';
 
-// Verifica se a rota existe
-if (!array_key_exists($route, $routes)) {
-    $route = '404';
+//Verifica rota existente
+if(!in_array($rota, $rotas)) {
+    //Caso não exita rota recebe 404
+    $rota = '404';
 }
 
-switch ($route) {
-    case 'home':
-        // Carrega o arquivo da rota
-        require_once'inc/header.php';
-        require_once "script/{$routes[$route]}";
-        require_once'inc/footer.php';
-        break;
+switch($rota) {
     case '404':
-        // Carrega o arquivo da rota
-        require_once'inc/header.php';   
-        require_once "script/{$routes['404']}";
-        require_once 'inc/footer.php';
+        require_once __DIR__ .'/inc/header.php';
+        require_once __DIR__ .'/scripts/404.php';
+        require_once __DIR__ .'/inc/footer.php';
+        break;
+    case 'home':
+        require_once __DIR__ .'/inc/header.php';
+        require_once __DIR__ .'/scripts/home.php';
+        require_once __DIR__ .'/inc/footer.php';
+        break;
+    //Por precaução ultilizar o default mesmo que não seja acessado diretamente
+    default: 
+        require_once __DIR__ .'/inc/header.php';
+        require_once __DIR__ .'/scripts/404.php';
+        require_once __DIR__ .'/inc/footer.php';
         break;
 }
-
-// Carrega o arquivo da rota
-require_once "script/{$routes[$route]}";

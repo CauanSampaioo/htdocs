@@ -2,5 +2,4 @@
 defined("CONTROL") or die("Acesso negado !!");
 ?>
 
-</body>
-</html>
+404

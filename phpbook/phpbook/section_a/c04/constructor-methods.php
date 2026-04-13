@@ -27,8 +27,8 @@ class Account
     }
 }
 
-$checking = new Account(43161176, 'Checking', 32.00);
-$savings  = new Account(20148896, 'Savings', 756.00);
+$corrente = new Account(43161176, 'corrente', 32.00);
+$poupanca  = new Account(20148896, 'poupança', 756.00);
 ?>
 
 <?php include 'includes/header.php'; ?>
@@ -36,23 +36,23 @@ $savings  = new Account(20148896, 'Savings', 756.00);
 <table>
   <tr>
     <th>Date</th>
-    <th><?= $checking->type ?></th>
-    <th><?= $savings->type  ?></th>
+    <th> <?= $corrente->type ?> </th>
+    <th> <?= $poupanca->type ?> </th>
   </tr>
   <tr>
-    <td>23 June</td>
-    <td>$<?= $checking->balance ?></td>
-    <td>$<?= $savings->balance  ?></td>
+    <td><?php echo  date('d/m'); ?></td>
+    <td>$<?= $corrente->balance ?></td>
+    <td>$<?= $poupanca->balance  ?></td>
   </tr>
   <tr>
-    <td>24 June</td>
-    <td>$<?= $checking->deposit(12.00)  ?></td>
-    <td>$<?= $savings->withdraw(100.00) ?></td>
+    <td><?= date('d/m'); ?></td>
+    <td>$<?= $corrente->deposit(12.00)  ?></td>
+    <td>$<?= $poupanca->withdraw(100.00) ?></td>
   </tr>
   <tr>
-    <td>25 June</td>
-    <td>$<?= $checking->withdraw(5.00) ?></td>
-    <td>$<?= $savings->deposit(300.00) ?></td>
+    <td><?= date('d/m'); ?></td>
+    <td>$<?= $corrente->withdraw(5.00) ?></td>
+    <td>$<?= $poupanca->deposit(300.00) ?></td>
   </tr>
 </table>
 <?php include 'includes/footer.php'; ?>

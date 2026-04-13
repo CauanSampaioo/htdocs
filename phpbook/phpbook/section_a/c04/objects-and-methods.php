@@ -22,5 +22,7 @@ $account = new Account();
 $account->balance = 100.00;
 ?>
 <?php include 'includes/header.php'; ?>
-  <p>$<?= $account->deposit(50.00) ?></p>
+    <p>Total $ <?= $account->balance?></p>
+    <p>$ <?= $account->deposit(50.00) ?></p>
+    <p>$ <?= $account->withdraw(70)?></p>
 <?php include 'includes/footer.php'; ?>

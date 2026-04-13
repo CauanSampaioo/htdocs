@@ -16,13 +16,13 @@ class Account {
     public function deposit(float $amount): float
     {
         $this->balance += $amount;
-        return $this->balance;
+        return $amount;
     }
 
-    public function withdraw(float $amount): float
+    public function saque(float $amount): float
     {
         $this->balance -= $amount;
-        return $this->balance;
+        return $amount;
     }
 
     public function getBalance(): float
@@ -36,5 +36,7 @@ $account = new Account(20148896, 'Savings', 80.00);
 <?php include 'includes/header.php'; ?>
 <h2><?= $account->type ?> Account</h2>
 <p>Previous balance: $<?= $account->getBalance() ?></p>
-<p>New balance: $<?= $account->deposit(35.00) ?></p>
+<p>New deposit: $<?= $account->deposit(35.00) ?></p>
+<p>New saque: $<?= $account->saque(15.00) ?></p>
+<p>Previous balance: $<?= $account->getBalance() ?></p>
 <?php include 'includes/footer.php'; ?>
