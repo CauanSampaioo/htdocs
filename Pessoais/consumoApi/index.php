@@ -4,6 +4,7 @@ define('CONTROL', true);
 
 //Lista de rotas
 $rotas = require __DIR__ . '/inc/rotas.php';
+require __DIR__ . '/inc/ApiConsumer.php';
 
 //Buscar rota na URL
 $rota = $_GET['rota'] ?? 'home';
@@ -23,6 +24,11 @@ switch($rota) {
     case 'home':
         require_once __DIR__ .'/inc/header.php';
         require_once __DIR__ .'/scripts/home.php';
+        require_once __DIR__ .'/inc/footer.php';
+        break;
+    case 'country':
+        require_once __DIR__ .'/inc/header.php';
+        require_once __DIR__ .'/scripts/country.php';
         require_once __DIR__ .'/inc/footer.php';
         break;
     //Por precaução ultilizar o default mesmo que não seja acessado diretamente

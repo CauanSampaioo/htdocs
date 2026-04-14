@@ -2,4 +2,4 @@
 defined("CONTROL") or die("Acesso negado !!");
 ?>
 
-404
+<h1 style="color: red">Error 404</h1>

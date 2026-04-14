@@ -2,12 +2,12 @@
 
 class ApiConsumer
 {
-    private function Api($endpoint, $method = 'GET',  $post_fields = []){
+    public function Api($endpoint, $method = 'GET',  $post_fields = []){
 
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-        CURLOPT_URL => "https://restcountries.com/v3.1/$endpoint?fields=name%2Ccapital%2Ccurrencies&fields=name%2Ccapital%2Ccurrencies",
+        CURLOPT_URL => "https://restcountries.com/v3.1/$endpoint",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -33,12 +33,17 @@ class ApiConsumer
     }
 
     public function getCountriesAll(){
-        $resultados = $this->Api('all');
+        $resultados = $this->Api('all?fields=name%2Ccapital%2Ccurrencies&fields=name%2Ccapital%2Ccurrencies');
         $countries = [];
         foreach($resultados as $result){
             $countries[] = $result['name']['common'];
         }
         sort($countries);
         return $countries;
+    }
+
+    public function getCountry($country){
+        $resultados = $this->Api("name/$country");
+        return $resultados;
     }
 }
