@@ -1,7 +1,7 @@
 <?php
 defined("CONTROL") or die("Acesso negado !!");
 
-$api = new ApiConsumer('all');
+$api = new ApiConsumer();
 $countries = $api->getCountriesAll();
 
 ?>
