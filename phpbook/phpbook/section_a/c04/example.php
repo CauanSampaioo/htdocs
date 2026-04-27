@@ -13,8 +13,8 @@ $customer = new Customer('Ivy', 'Stone', 'ivy@eg.link', 'Jup!t3r2684', $accounts
 
 <table>
   <tr>
-    <th>Account Number</th>
-    <th>Account Type</th>
+    <th>Account Number |</th>
+    <th>Account Type |</th>
     <th>Balance</th>
   </tr>
 
